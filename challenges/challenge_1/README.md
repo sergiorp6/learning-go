@@ -6,7 +6,7 @@ In this first challenge we are going to introduce the business problem in which 
 of challenges. Furthermore, we will create our first, and main, module to set up our project.
 
 Later, we are going to model our business requirements and even implement the repository pattern with some in-memory 
-data structures. There we go! 🚀
+data structures. There we Go! 🚀
 
 ## The business problem
 
@@ -29,7 +29,7 @@ Regarding the ad, it is composed by:
 
 ## How to start
 
-The first step is to create our first, and main, go module. To do that, we need to run a command in our favorite CLI at 
+The first step is to create our first, and main, Go module. To do that, we need to run a command in our favorite CLI at 
 the root of the project (replace with your GitHub user before running it):
 
 ````bash
