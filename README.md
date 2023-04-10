@@ -1,6 +1,8 @@
-# Learning Go
+<img alt="Two gophers reading something" src="img/gopher.png" width="200px" style="display: block; margin: 0 auto"/>
 
-<img alt="Two gophers reading something" src="img/gopher.png" width="200px"/>
+<h1 style="text-align: center;">
+  Learning Go
+</h1>
 
 ## Introduction
 

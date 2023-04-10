@@ -1,6 +1,8 @@
-# Challenge #1. Package visibility, structs and data structures
+<img alt="&quot;a random gopher created by gopherize.me&quot;" src="../../img/gopher-challenge-1.png" width="200px" style="display: block; margin: 0 auto"/>
 
-<img alt="&quot;a random gopher created by gopherize.me&quot;" src="../../img/gopher-challenge-1.png" width="200px"/>
+<h1 style="text-align: center;">
+  Challenge #1. Package visibility, structs and data structures
+</h1>
 
 In this first challenge we are going to introduce the business problem in which we will be working during the entire set
 of challenges. Furthermore, we will create our first, and main, module to set up our project.
