@@ -42,17 +42,18 @@ To start with this series of challenges, the minimal requirements are:
 
 Follow instructions from https://go.dev/doc/install. 
 
-On macOS is even easier, just type in your terminal:
+On macOS if you are currently using Homebrew is even easier, just type in your terminal:
 ```bash
 brew install go
 ```
 
 ### 2. Set up your favourite IDE
 
-For Visual Studio follow this: https://learn.microsoft.com/en-us/azure/developer/go/configure-visual-studio-code
-For IntelliJ just install this plugin: https://plugins.jetbrains.com/plugin/9568-go?_ga=2.122569868.664457569.1681124920-637112615.1649069055&_gl=1%2A1upp818%2A_ga%2ANjM3MTEyNjE1LjE2NDkwNjkwNTU.%2A_ga_9J976DJZ68%2AMTY4MTEyNDkyMC41My4wLjE2ODExMjQ5MjAuNjAuMC4w
+* For Visual Studio follow these [instructions](https://learn.microsoft.com/en-us/azure/developer/go/configure-visual-studio-code)
 
-Furthermore, JetBrains has its own IDE for Go: [GoLand](https://www.jetbrains.com/go/promo/). But, if you are already 
+* For IntelliJ just install this [plugin](https://plugins.jetbrains.com/plugin/9568-go?_ga=2.122569868.664457569.1681124920-637112615.1649069055&_gl=1%2A1upp818%2A_ga%2ANjM3MTEyNjE1LjE2NDkwNjkwNTU.%2A_ga_9J976DJZ68%2AMTY4MTEyNDkyMC41My4wLjE2ODExMjQ5MjAuNjAuMC4w).
+
+Furthermore, JetBrains has its own IDE for Go: [GoLand](https://www.jetbrains.com/go/promo/). However, if you are already 
 familiar with IntelliJ, the recommendation should be to continue with IntelliJ.
 
 ### 3. Have fun!
