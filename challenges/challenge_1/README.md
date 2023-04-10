@@ -59,7 +59,9 @@ we are going to need, also, to implement a proper modeling of the `Ad` and an in
 on arrays, maps or the data structure you want).
 
 * Keep in mind that we want to practice with the package visibility and how we can interact between different packages, so
-try to split all this logic across different packages.
+try to split all this logic across different packages. If you feel lost, take a look at this
+[repository](https://github.com/golang-standards/project-layout) to get an overview of how a project layout looks like 
+in Go, but it is not so important at this point.
 
 * For the sake of simplicity, we are coding only the happy paths, don't worry (yet) about possible errors in our use cases
 (i.e. what happens when we post an ad with an id that is currently used).
