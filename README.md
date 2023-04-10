@@ -38,7 +38,12 @@ the pieces of code which we have been working on until now.
 
 To start with this series of challenges, the minimal requirements are:
 
-### 1. Install Go
+### 1. Fork this repository
+
+The way of go with these challenges is by forking this repository and working in your own version of the repository.
+This way, all of us can have tons of solutions to learn from!
+
+### 2. Install Go
 
 Follow instructions from https://go.dev/doc/install. 
 
@@ -47,7 +52,7 @@ On macOS if you are currently using Homebrew is even easier, just type in your t
 brew install go
 ```
 
-### 2. Set up your favourite IDE
+### 3. Set up your favourite IDE
 
 * For Visual Studio follow these [instructions](https://learn.microsoft.com/en-us/azure/developer/go/configure-visual-studio-code)
 
@@ -56,6 +61,10 @@ brew install go
 Furthermore, JetBrains has its own IDE for Go: [GoLand](https://www.jetbrains.com/go/promo/). However, if you are already 
 familiar with IntelliJ, the recommendation should be to continue with IntelliJ.
 
-### 3. Have fun!
+### 4. Have fun and share!
+
+Most of the time, there will be different ways of solving a challenge, the purpose of this repository is double: to 
+practice with Go's ecosystem and to set up interesting discussions between us, so we encourage to share your solutions
+or your doubts with the community (at slack: #learning-go) to learn from each other ❤️
 
 That's all! You are completely ready to dive into the first challenge 🚀
