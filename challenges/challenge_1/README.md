@@ -21,7 +21,48 @@ need is:
 * The capability of finding a set of 10 (as maximum) ads to compose a listing
 
 Regarding the ad, it is composed by:
+* id (UUID)
 * title
 * description
 * price
 * date and time of publication
+
+## How to start
+
+The first step is to create our first, and main, go module. To do that, we need to run a command in our favorite CLI at 
+the root of the project (replace with your GitHub user before running it):
+
+````bash
+go mod init github.mpi-internal.com/{githubUser}/learning-go
+````
+
+This command will take care of create the module pointing to your remote repository.
+
+Once our module has been created, we only need an entrypoint for our new Go application. Create a new file, at the root
+of the project, named `main.go` with the follow content:
+
+````go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello world!")
+}
+````
+With this we are totally ready! You can run your new application that will print out a simple greeting message.
+
+## Instructions
+
+* To complete this challenge you will be required to implement the three use cases we mentioned earlier. To do that,
+we are going to need, also, to implement a proper modeling of the `Ad` and an in-memory repository (which can be based
+on arrays, maps or the data structure you want).
+
+* Keep in mind that we want to practice with the package visibility and how we can interact between different packages, so
+try to split all this logic across different packages.
+
+* For the sake of simplicity, we are coding only the happy paths, don't worry (yet) about possible errors in our use cases
+(i.e. what happens when we post an ad with an id that is currently used).
+
+* Finally, to test these features, by the moment, we are going to use the main function of `main.go` to run them and log
+the results through the standard output.
