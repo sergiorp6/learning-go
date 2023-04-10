@@ -1,6 +1,8 @@
-<img alt="&quot;a random gopher created by gopherize.me&quot;" src="../../img/gopher-challenge-1.png" width="200px" style="display: block; margin: 0 auto"/>
+<p align="center">
+    <img alt="&quot;a random gopher created by gopherize.me&quot;" src="../../img/gopher-challenge-1.png" width="200px" style="display: block; margin: 0 auto"/>
+</p>
 
-<h1 style="text-align: center;">
+<h1 align="center">
   Challenge #1. Package visibility, structs and data structures
 </h1>
 
