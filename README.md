@@ -1,6 +1,6 @@
 # Learning Go
 
-![](img/gopher.png)
+<img alt="Two gophers reading something" src="img/gopher.png" width="200px"/>
 
 ## Introduction
 
@@ -31,7 +31,7 @@ Furthermore, we will define our first structs and data structures (arrays, maps 
 
 ### Challenge #2. Error handling and testing
 
-In this second challenge we are going to practice with error handling and adding the first test suites to test 
+In this second challenge we are going to practice error handling and adding the first test suites to test 
 the pieces of code which we have been working on until now.
 
 ## How to start
@@ -64,7 +64,7 @@ familiar with IntelliJ, the recommendation should be to continue with IntelliJ.
 ### 4. Have fun and share!
 
 Most of the time, there will be different ways of solving a challenge, the purpose of this repository is double: to 
-practice with Go's ecosystem and to set up interesting discussions between us, so we encourage to share your solutions
+practice with Go's ecosystem and to set up interesting discussions between us, so we encourage you to share your solutions
 or your doubts with the community (at slack: #learning-go) to learn from each other ❤️
 
 That's all! You are completely ready to dive into the first challenge 🚀
