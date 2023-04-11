@@ -22,7 +22,7 @@ So, as it stands right now (and we made product people to swear that these requi
 need is:
 * The capability of posting an ad
 * The capability of finding an ad by ID
-* The capability of finding a set of 10 (as maximum) ads to compose a listing
+* The capability of finding a set of 5 (as maximum) ads to compose a listing
 
 Regarding the ad, it is composed by:
 * id (UUID)
@@ -63,8 +63,7 @@ we are going to need, also, to implement a proper modeling of the `Ad` and an in
 on arrays, maps or the data structure you want).
 
 * Keep in mind that we want to practice with the package visibility and how we can interact between different packages, so
-try to split all this logic across different packages. If you feel lost, take a look at this
-[repository](https://github.com/golang-standards/project-layout) to get an overview of how a project layout looks like 
+try to split all this logic across different packages. If you feel lost, take a look at [1] to get an overview of how a project layout looks like 
 in Go, but it is not so important at this point.
 
 * For the sake of simplicity, we are coding only the happy paths, don't worry (yet) about possible errors in our use cases
@@ -72,3 +71,7 @@ in Go, but it is not so important at this point.
 
 * Finally, to test these features, by the moment, we are going to use the main function of `main.go` to run them and log
 the results through the standard output.
+
+## Resources
+
+[1] Non-official project structure standard for Go projects: https://github.com/golang-standards/project-layout#go-directories
