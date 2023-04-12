@@ -45,8 +45,8 @@ To practice with error handling, three scenarios are proposed:
   them from the use cases.
 
 ## Resources
-[1] Testify documentation for mock and asssert packages: https://github.com/stretchr/testify
-[2] Mocks in Go. Tests with Testify Mock: https://dev.to/salesforceeng/mocks-in-go-tests-with-testify-mock-6pd
-[3] Go by example: Errors: https://gobyexample.com/errors
-[4] Working with Errors in Go 1.13: https://go.dev/blog/go1.13-errors
-[5] Effective error handling in Golang: https://earthly.dev/blog/golang-errors/
+1. Testify documentation for mock and asssert packages: https://github.com/stretchr/testify
+2. Mocks in Go. Tests with Testify Mock: https://dev.to/salesforceeng/mocks-in-go-tests-with-testify-mock-6pd
+3. Go by example: Errors: https://gobyexample.com/errors
+4. Working with Errors in Go 1.13: https://go.dev/blog/go1.13-errors
+5. Effective error handling in Golang: https://earthly.dev/blog/golang-errors/
