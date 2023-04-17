@@ -1,6 +1,7 @@
 package domain
 
 import (
+	"errors"
 	"fmt"
 	"github.com/google/uuid"
 	"time"
@@ -14,54 +15,97 @@ type Ad struct {
 	publishedAt PublishedAt
 }
 
-func NewAd(id Id, title Title, description Description, price Price, publishedAt PublishedAt) Ad {
-	return Ad{
-		id:          id,
-		title:       title,
-		description: description,
-		price:       price,
-		publishedAt: publishedAt,
+func NewAd(id, title, description string, price float64, publishedAt time.Time) (Ad, error) {
+	titleVo, err := NewTitle(title)
+
+	if err != nil {
+		return Ad{}, err
 	}
+
+	return Ad{
+		id:          NewId(id),
+		title:       titleVo,
+		description: NewDescription(description),
+		price:       NewPrice(price),
+		publishedAt: NewPublishedAt(publishedAt),
+	}, nil
 }
 
 func (ad Ad) String() string {
 	return fmt.Sprintf("Ad{ID:%s, Title:%s, Description:%s, Price:%f, PublishedAt:%s}",
-		ad.id, ad.title, ad.description, ad.price, ad.publishedAt.Value.Format(time.RFC3339))
+		ad.id, ad.title, ad.description, ad.price, ad.publishedAt.Value().Format(time.RFC3339))
 }
 func (ad Ad) Id() Id {
 	return ad.id
 }
 
 type Id struct {
-	Value uuid.UUID
+	value uuid.UUID
 }
 
 func NewId(uuidString string) Id {
 	parsed, err := uuid.Parse(uuidString)
 	if err != nil {
-		_ = fmt.Errorf("invalid UUID string", err)
+		_ = fmt.Errorf("%w: %s", err, uuidString)
 	}
-	return Id{Value: parsed}
+	return Id{value: parsed}
 }
 
 func (id Id) String() string {
-	return id.Value.String()
+	return id.value.String()
 }
 
 type Title struct {
-	Value string
+	value string
+}
+
+var ErrTitleTooLong = errors.New("Title above ")
+
+func NewTitle(value string) (Title, error) {
+	if len(value) > 50 {
+		return Title{}, fmt.Errorf("%w: %s", ErrTitleTooLong, value)
+	}
+	return Title{value: value}, nil
+}
+
+func (t Title) Value() string {
+	return t.value
 }
 
 type Description struct {
-	Value string
+	value string
+}
+
+func NewDescription(value string) Description {
+	return Description{value: value}
+}
+
+func (d Description) Value() string {
+	return d.value
 }
 
 type Price struct {
-	Value float64
+	value float64
+}
+
+func NewPrice(value float64) Price {
+	return Price{value: value}
+}
+
+func (p Price) Value() float64 {
+	return p.value
 }
 
 type PublishedAt struct {
-	Value time.Time
+	value time.Time
+}
+
+func NewPublishedAt(value time.Time) PublishedAt {
+	return PublishedAt{value: value}
+}
+
+func (p PublishedAt) Value() time.Time {
+	return p.value
 }
 
 type Repository interface {

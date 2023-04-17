@@ -3,7 +3,9 @@ package main
 import (
 	"fmt"
 	"github.com/google/uuid"
-	. "github.mpi-internal.com/sergio.rodriguezp/learning-go/challenges/challenge_2/internal/ad/application"
+	. "github.mpi-internal.com/sergio.rodriguezp/learning-go/challenges/challenge_2/internal/ad/application/findbyid"
+	. "github.mpi-internal.com/sergio.rodriguezp/learning-go/challenges/challenge_2/internal/ad/application/getadslist"
+	. "github.mpi-internal.com/sergio.rodriguezp/learning-go/challenges/challenge_2/internal/ad/application/postad"
 	. "github.mpi-internal.com/sergio.rodriguezp/learning-go/challenges/challenge_2/internal/ad/infrastructure"
 	"time"
 )
@@ -22,13 +24,13 @@ func postAd() {
 	uuidString := uuid.New().String()
 
 	err := service.Execute(
-		PostAdRequest{
-			Id:          uuidString,
-			Title:       "title",
-			Description: "description",
-			Price:       10.50,
-			PublishedAt: time.Now(),
-		},
+		NewPostAdRequest(
+			uuidString,
+			"title",
+			"description",
+			10.50,
+			time.Now(),
+		),
 	)
 	if err != nil {
 		_ = fmt.Errorf("error posting ad: %s", uuidString)
@@ -39,7 +41,7 @@ func postAd() {
 func printAdContents(id string) {
 	service := NewFindAdByIdService(repository)
 
-	ad, err := service.Execute(FindAdByIdRequest{Id: id})
+	ad, err := service.Execute(NewFindAdByIdRequest(id))
 
 	if err != nil {
 		_ = fmt.Errorf("error fetching ad: %s", id)
@@ -55,7 +57,7 @@ func printAdContents(id string) {
 func printAllAds() {
 	service := NewGetAdsListService(repository)
 
-	ads := service.Execute(GetAdsListRequest{NumberOfElements: 10})
+	ads := service.Execute(NewGetAdsListRequest(10))
 
 	fmt.Printf("Printing a list of %d ads\n", len(ads))
 	for _, ad := range ads {

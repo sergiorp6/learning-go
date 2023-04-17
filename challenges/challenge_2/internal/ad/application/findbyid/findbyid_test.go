@@ -1,4 +1,4 @@
-package application
+package findbyid
 
 import (
 	"errors"
@@ -10,19 +10,19 @@ import (
 
 func Test_findAdByIdService_Execute(t *testing.T) {
 	now := time.Now()
-	expected := NewAd(
-		NewId("123"),
-		Title{Value: "Test Ad"},
-		Description{Value: "This is a test expected"},
-		Price{Value: 9.99},
-		PublishedAt{Value: now},
+	expected, _ := NewAd(
+		"123",
+		"Test Ad",
+		"This is a test expected",
+		9.99,
+		now,
 	)
 	t.Run("success", func(t *testing.T) {
 		repo := NewMockRepository(true)
 		repo.On("FindBy", expected.Id()).Return(&expected, nil)
 		service := NewFindAdByIdService(repo)
 
-		actual, _ := service.Execute(FindAdByIdRequest{Id: expected.Id().String()})
+		actual, _ := service.Execute(NewFindAdByIdRequest(expected.Id().String()))
 
 		assert.Equal(t, &expected, actual)
 	})
@@ -32,7 +32,7 @@ func Test_findAdByIdService_Execute(t *testing.T) {
 		repo.On("FindBy", expected.Id()).Return(nil, nil)
 		service := NewFindAdByIdService(repo)
 
-		actual, _ := service.Execute(FindAdByIdRequest{Id: expected.Id().String()})
+		actual, _ := service.Execute(NewFindAdByIdRequest(expected.Id().String()))
 
 		assert.Nil(t, actual)
 	})
@@ -43,7 +43,7 @@ func Test_findAdByIdService_Execute(t *testing.T) {
 		repo.On("FindBy", expected.Id()).Return(nil, expectedError)
 		service := NewFindAdByIdService(repo)
 
-		_, actualError := service.Execute(FindAdByIdRequest{Id: expected.Id().String()})
+		_, actualError := service.Execute(NewFindAdByIdRequest(expected.Id().String()))
 
 		assert.Equal(t, expectedError, actualError)
 	})

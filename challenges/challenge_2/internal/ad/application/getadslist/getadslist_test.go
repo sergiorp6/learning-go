@@ -1,4 +1,4 @@
-package application
+package getadslist
 
 import (
 	"github.com/google/uuid"
@@ -15,22 +15,20 @@ func Test_getAdsListService_Execute(t *testing.T) {
 
 	t.Run("success", func(t *testing.T) {
 		for range [numberOfElements]struct{}{} {
-			expected = append(
-				expected,
-				NewAd(
-					NewId(uuid.NewString()),
-					Title{Value: "A title"},
-					Description{Value: "A description"},
-					Price{Value: 9.99},
-					PublishedAt{Value: now},
-				),
+			ad, _ := NewAd(
+				uuid.NewString(),
+				"A title",
+				"A description",
+				9.99,
+				now,
 			)
+			expected = append(expected, ad)
 		}
 		repo := NewMockRepository(true)
 		repo.On("FindSetOf", numberOfElements).Return(expected, nil)
 		service := NewGetAdsListService(repo)
 
-		actual := service.Execute(GetAdsListRequest{NumberOfElements: numberOfElements})
+		actual := service.Execute(NewGetAdsListRequest(numberOfElements))
 
 		assert.Equal(t, expected, actual)
 	})
@@ -41,7 +39,7 @@ func Test_getAdsListService_Execute(t *testing.T) {
 		repo.On("FindSetOf", numberOfElements).Return(expected, nil)
 		service := NewGetAdsListService(repo)
 
-		actual := service.Execute(GetAdsListRequest{NumberOfElements: numberOfElements})
+		actual := service.Execute(NewGetAdsListRequest(numberOfElements))
 
 		assert.Equal(t, expected, actual)
 	})

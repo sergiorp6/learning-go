@@ -10,12 +10,12 @@ import (
 
 func TestInMemoryRepository_Save(t *testing.T) {
 	repo := InMemoryRepository{}
-	ad := NewAd(
-		NewId("78b1c410-3ea7-4e9b-8a4b-9809b5c43394"),
-		Title{Value: "A title"},
-		Description{Value: "A description"},
-		Price{Value: 9.99},
-		PublishedAt{Value: time.Now()},
+	ad, _ := NewAd(
+		"78b1c410-3ea7-4e9b-8a4b-9809b5c43394",
+		"A title",
+		"A description",
+		9.99,
+		time.Now(),
 	)
 
 	repo.Save(ad)
@@ -27,12 +27,12 @@ func TestInMemoryRepository_Save(t *testing.T) {
 func TestInMemoryRepository_FindBy(t *testing.T) {
 	existingId := NewId("78b1c410-3ea7-4e9b-8a4b-9809b5c43394")
 	nonExistingId := NewId("b41f9d3a-5036-4d21-8a92-fedfefca11e8")
-	expected := NewAd(
-		existingId,
-		Title{Value: "A title"},
-		Description{Value: "A description"},
-		Price{Value: 9.99},
-		PublishedAt{Value: time.Now()},
+	expected, _ := NewAd(
+		existingId.String(),
+		"A title",
+		"A description",
+		9.99,
+		time.Now(),
 	)
 	repo := InMemoryRepository{[]Ad{expected}}
 
@@ -61,18 +61,15 @@ func TestInMemoryRepository_FindSetOf(t *testing.T) {
 	t.Run("Get less elements than maximum allowed", func(t *testing.T) {
 		const numberOfElements = 4
 		var ads []Ad
-
 		for range [numberOfElements]struct{}{} {
-			ads = append(
-				ads,
-				NewAd(
-					NewId(uuid.NewString()),
-					Title{Value: "A title"},
-					Description{Value: "A description"},
-					Price{Value: 9.99},
-					PublishedAt{Value: time.Now()},
-				),
+			ad, _ := NewAd(
+				uuid.NewString(),
+				"A title",
+				"A description",
+				9.99,
+				time.Now(),
 			)
+			ads = append(ads, ad)
 		}
 		repo := InMemoryRepository{ads}
 
@@ -84,21 +81,18 @@ func TestInMemoryRepository_FindSetOf(t *testing.T) {
 	t.Run("Get the maximum elements allowed", func(t *testing.T) {
 		const numberOfElements = 10
 		var ads []Ad
-
 		for range [numberOfElements]struct{}{} {
-			ads = append(
-				ads,
-				NewAd(
-					NewId(uuid.NewString()),
-					Title{Value: "A title"},
-					Description{Value: "A description"},
-					Price{Value: 9.99},
-					PublishedAt{Value: time.Now()},
-				),
+			ad, _ := NewAd(
+				uuid.NewString(),
+				"A title",
+				"A description",
+				9.99,
+				time.Now(),
 			)
+			ads = append(ads, ad)
 		}
-
 		repo := InMemoryRepository{ads}
+
 		actual, _ := repo.FindSetOf(numberOfElements)
 
 		const maxNumberOfElements = 5

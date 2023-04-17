@@ -1,4 +1,4 @@
-package application
+package getadslist
 
 import (
 	"fmt"
@@ -13,13 +13,21 @@ func NewGetAdsListService(adRepository Repository) getAdsListService {
 	return getAdsListService{adRepository: adRepository}
 }
 func (s getAdsListService) Execute(request GetAdsListRequest) []Ad {
-	ads, err := s.adRepository.FindSetOf(request.NumberOfElements)
+	ads, err := s.adRepository.FindSetOf(request.NumberOfElements())
 	if err != nil {
-		_ = fmt.Errorf("error getting a list of %d ads", request.NumberOfElements)
+		_ = fmt.Errorf("error getting a list of %d ads", request.NumberOfElements())
 	}
 	return ads
 }
 
 type GetAdsListRequest struct {
-	NumberOfElements int
+	numberOfElements int
+}
+
+func NewGetAdsListRequest(numberOfElements int) GetAdsListRequest {
+	return GetAdsListRequest{numberOfElements: numberOfElements}
+}
+
+func (g GetAdsListRequest) NumberOfElements() int {
+	return g.numberOfElements
 }
