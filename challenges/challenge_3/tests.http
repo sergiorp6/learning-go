@@ -1,0 +1,13 @@
+PUT http://localhost:8080/ads/ddbef8db-feda-46fa-85cf-5fbf07b94602
+Content-Type: application/json
+
+{
+  "title": "A title",
+  "description": "A description",
+  "price": 9.99
+}
+
+
+### GET request with a header
+GET http://localhost:8080/ads/ddbef8db-feda-46fa-85cf-5fbf07b94602
+Accept: application/json
