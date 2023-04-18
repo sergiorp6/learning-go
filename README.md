@@ -38,6 +38,11 @@ Furthermore, we will define our first structs and data structures (arrays, maps 
 In this second challenge we are going to practice error handling and adding the first test suites to test 
 the pieces of code which we have been working on until now.
 
+### Challenge #3. Building an HTTP API
+
+In this third challenge we are going to create our first HTTP API with Gin and to validate it with some fresh new 
+contract tests.
+
 ## How to start
 
 To start with this series of challenges, the minimal requirements are:
