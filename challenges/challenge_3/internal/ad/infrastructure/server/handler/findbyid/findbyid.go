@@ -29,8 +29,6 @@ func FindByIdHandler(findByIdService FindByIdService) gin.HandlerFunc {
 		} else {
 			ctx.Status(http.StatusNotFound)
 		}
-
-		ctx.Status(http.StatusCreated)
 	}
 }
 

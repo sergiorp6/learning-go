@@ -98,4 +98,25 @@ func TestInMemoryRepository_FindSetOf(t *testing.T) {
 		const maxNumberOfElements = 5
 		assert.Len(t, actual, maxNumberOfElements)
 	})
+	t.Run("Try to get more elements than persisted", func(t *testing.T) {
+		const numberOfElements = 10
+		const persistedElements = 1
+		var ads []Ad
+		for range [persistedElements]struct{}{} {
+			ad, _ := NewAd(
+				uuid.NewString(),
+				"A title",
+				"A description",
+				9.99,
+				time.Now(),
+			)
+			ads = append(ads, ad)
+		}
+		repo := InMemoryRepository{ads}
+
+		actual, _ := repo.FindSetOf(numberOfElements)
+
+		assert.Len(t, actual, persistedElements)
+	})
+
 }
