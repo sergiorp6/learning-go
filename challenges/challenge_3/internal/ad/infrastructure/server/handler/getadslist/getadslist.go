@@ -1,16 +1,22 @@
-package findbyid
+package getadslist
 
 import (
 	"github.com/gin-gonic/gin"
 	. "github.mpi-internal.com/sergio.rodriguezp/learning-go/challenges/challenge_3/internal/ad/application/getadslist"
 	"net/http"
+	"strconv"
 )
 
 func GetAdsListHandler(getAdsListService GetAdsListService) gin.HandlerFunc {
 
 	return func(ctx *gin.Context) {
-
-		ads := getAdsListService.Execute(NewGetAdsListRequest(5))
+		limitStr := ctx.DefaultQuery("limit", "10")
+		limit, err := strconv.Atoi(limitStr)
+		if err != nil {
+			ctx.JSON(http.StatusBadRequest, gin.H{"error": "Limit must be a number"})
+			return
+		}
+		ads := getAdsListService.Execute(NewGetAdsListRequest(limit))
 		var adsResponse []httpAdResponse
 
 		for _, ad := range ads {

@@ -25,3 +25,8 @@ Content-Type: application/json
 ### get a list of ads
 GET http://localhost:8080/ads
 Accept: application/json
+
+
+### get a list of ads with limit
+GET http://localhost:8080/ads?limit=2
+Accept: application/json
