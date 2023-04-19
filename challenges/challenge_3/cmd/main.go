@@ -20,7 +20,7 @@ var repository = &InMemoryRepository{}
 func main() {
 	fmt.Println("Server running on", httpAddr)
 
-	srv := gin.New()
+	srv := gin.Default()
 	srv.PUT("/ads/:id", PostAdHandler(NewPostAdService(repository)))
 	srv.GET("/ads/:id", FindByIdHandler(NewFindByIdService(repository)))
 	srv.GET("/ads", GetAdsListHandler(NewGetAdsListService(repository)))
