@@ -7,9 +7,11 @@ on:
     branches: [ "master" ]
 
 jobs:
-
   build:
     runs-on: [ self-hosted ]
+    defaults:
+      run:
+        working-directory: ./challenges/challenge_3
     steps:
     - uses: actions/checkout@v3
 

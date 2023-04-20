@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func FindByIdHandler(findByIdService FindByIdService) gin.HandlerFunc {
+func FindByIdHandler(findByIdService FindByIdServiceInterface) gin.HandlerFunc {
 
 	return func(ctx *gin.Context) {
 		id := ctx.Param("id")

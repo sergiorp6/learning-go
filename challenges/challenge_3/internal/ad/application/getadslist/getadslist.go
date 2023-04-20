@@ -5,6 +5,10 @@ import (
 	. "github.mpi-internal.com/sergio.rodriguezp/learning-go/challenges/challenge_3/internal/ad/domain"
 )
 
+type GetAdsListServiceInterface interface {
+	Execute(request GetAdsListRequest) []Ad
+}
+
 type GetAdsListService struct {
 	adRepository Repository
 }
@@ -12,6 +16,7 @@ type GetAdsListService struct {
 func NewGetAdsListService(adRepository Repository) GetAdsListService {
 	return GetAdsListService{adRepository: adRepository}
 }
+
 func (s GetAdsListService) Execute(request GetAdsListRequest) []Ad {
 	ads, err := s.adRepository.FindSetOf(request.NumberOfElements())
 	if err != nil {

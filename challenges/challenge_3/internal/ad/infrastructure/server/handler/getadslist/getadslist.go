@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-func GetAdsListHandler(getAdsListService GetAdsListService) gin.HandlerFunc {
+func GetAdsListHandler(getAdsListService GetAdsListServiceInterface) gin.HandlerFunc {
 
 	return func(ctx *gin.Context) {
 		limitStr := ctx.DefaultQuery("limit", "10")

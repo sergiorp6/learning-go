@@ -4,6 +4,10 @@ import (
 	. "github.mpi-internal.com/sergio.rodriguezp/learning-go/challenges/challenge_3/internal/ad/domain"
 )
 
+type FindByIdServiceInterface interface {
+	Execute(request FindByIdRequest) (*Ad, error)
+}
+
 type FindByIdService struct {
 	adRepository Repository
 }
