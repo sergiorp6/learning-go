@@ -70,6 +70,9 @@ GET http://localhost:8080/ads
 ````
 Be sure to add some **contract tests** to each endpoint to validate their behaviour.
 
+At this point, what would happen if a panic or runtime error appears? Would our API return a proper status code 
+(5xx family)? How can we deal with these situations?
+
 
 ## Resources
 1. How to do contract testing with Gin: https://gin-gonic.com/docs/testing/
