@@ -1,15 +1,15 @@
 package postad
 
 import (
+	"errors"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	. "github.mpi-internal.com/sergio.rodriguezp/learning-go/challenges/challenge_3/internal/ad/application/postad"
+	. "github.mpi-internal.com/sergio.rodriguezp/learning-go/challenges/challenge_3/internal/ad/domain"
 	"net/http"
-	"time"
 )
 
-func PostAdHandler(postAdService PostAdService) gin.HandlerFunc {
-
+func PostAdHandler(postAdService PostAdServiceInterface) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		var req httpPostAdRequest
 		if err := ctx.BindJSON(&req); err != nil {
@@ -18,9 +18,12 @@ func PostAdHandler(postAdService PostAdService) gin.HandlerFunc {
 		}
 		id := ctx.Param("id")
 
-		err := postAdService.Execute(NewPostAdRequest(id, req.Title, req.Description, req.Price, time.Now()))
+		err := postAdService.Execute(NewPostAdRequest(id, req.Title, req.Description, req.Price))
 		if err != nil {
 			_ = fmt.Errorf("error posting ad: %s", id)
+			if errors.Is(err, ErrTitleTooLong) {
+				ctx.JSON(http.StatusBadRequest, err.Error())
+			}
 		}
 
 		ctx.Status(http.StatusCreated)

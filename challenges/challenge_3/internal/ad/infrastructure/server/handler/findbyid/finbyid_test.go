@@ -40,12 +40,13 @@ func TestFindByIdHandler_Success(t *testing.T) {
 	)
 	mockService.On("Execute", NewFindByIdRequest(expected.Id().String())).Return(&expected, nil)
 	router := gin.Default()
-	router.GET("/ads/:id", FindByIdHandler(mockService))
+	router.GET("/ddadsdfsdg/:id", FindByIdHandler(mockService))
 
-	req, _ := http.NewRequest("GET", "/ads/"+expected.Id().String(), nil)
+	req, _ := http.NewRequest("GET", "/ddadsdfsdg/"+expected.Id().String(), nil)
 	resp := httptest.NewRecorder()
 	router.ServeHTTP(resp, req)
 
+	mockService.AssertExpectations(t)
 	assert.Equal(t, http.StatusOK, resp.Code)
 	expectedJSON := `{"id":"` + expected.Id().String() + `","title":"Test Ad","description":"Test description","price":9.99}`
 	assert.JSONEq(t, expectedJSON, resp.Body.String())

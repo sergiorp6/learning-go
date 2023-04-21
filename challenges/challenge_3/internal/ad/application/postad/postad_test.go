@@ -9,27 +9,37 @@ import (
 	"time"
 )
 
+type FrozenClock struct {
+}
+
+func (f FrozenClock) Now() time.Time {
+	input := "2023-01-01"
+	layout := "2006-01-02"
+	t, _ := time.Parse(layout, input)
+
+	return t
+}
+
 func TestPostAdService_Execute(t *testing.T) {
-	now := time.Now()
+	clock := FrozenClock{}
 	ad, _ := NewAd(
 		"69d39636-d256-47e6-bf86-6bef0cb32ceb",
 		"Test Ad",
 		"This is a test ad",
 		9.99,
-		now,
+		clock.Now(),
 	)
 	request := PostAdRequest{
 		"69d39636-d256-47e6-bf86-6bef0cb32ceb",
 		"Test Ad",
 		"This is a test ad",
 		9.99,
-		now,
 	}
 
 	t.Run("success", func(t *testing.T) {
 		repo := NewMockRepository(true)
 		repo.On("Save", ad).Return(true, nil)
-		service := NewPostAdService(repo)
+		service := NewPostAdService(repo, clock)
 
 		service.Execute(request)
 
@@ -39,13 +49,12 @@ func TestPostAdService_Execute(t *testing.T) {
 
 	t.Run("fail when title is larger than 50 characters", func(t *testing.T) {
 		repo := NewMockRepository(true)
-		service := NewPostAdService(repo)
+		service := NewPostAdService(repo, clock)
 		request := PostAdRequest{
 			"69d39636-d256-47e6-bf86-6bef0cb32ceb",
 			"Lorem ipsum dolor sit amet, consectetuer adipiscing",
 			"This is a test ad",
 			9.99,
-			now,
 		}
 
 		actualError := service.Execute(request)
@@ -58,7 +67,7 @@ func TestPostAdService_Execute(t *testing.T) {
 		repo := NewMockRepository(true)
 		expectedError := errors.New("an error")
 		repo.On("Save", ad).Return(false, expectedError)
-		service := NewPostAdService(repo)
+		service := NewPostAdService(repo, clock)
 
 		actualError := service.Execute(request)
 

@@ -50,6 +50,7 @@ func TestGetAdsListHandler_Success(t *testing.T) {
 	resp := httptest.NewRecorder()
 	router.ServeHTTP(resp, req)
 
+	mockService.AssertExpectations(t)
 	assert.Equal(t, http.StatusOK, resp.Code)
 	expectedJSON := `{"data":[{"id":"` + idString + `","title":"A title","description":"A description","price":9.99}]}`
 	assert.JSONEq(t, expectedJSON, resp.Body.String())
@@ -57,7 +58,6 @@ func TestGetAdsListHandler_Success(t *testing.T) {
 
 func TestGetAdsListHandler_BadRequest(t *testing.T) {
 	mockService := NewMockGetAdsListService()
-
 	router := gin.Default()
 	router.GET("/ads", GetAdsListHandler(mockService))
 

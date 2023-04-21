@@ -75,7 +75,7 @@ type Title struct {
 	value string
 }
 
-var ErrTitleTooLong = errors.New("Title above ")
+var ErrTitleTooLong = errors.New("title longer than 50 characters")
 
 func NewTitle(value string) (Title, error) {
 	if len(value) > 50 {

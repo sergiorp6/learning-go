@@ -28,10 +28,6 @@ func (r *InMemoryRepository) FindSetOf(number int) ([]Ad, error) {
 		return nil, nil
 	}
 
-	if len(r.data) < number {
-		return r.data, nil
-	}
-
 	if number < min {
 		number = min
 	} else if number > max {
