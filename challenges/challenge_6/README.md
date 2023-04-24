@@ -3,17 +3,14 @@
 </p>
 
 <h1 align="center" style="text-align: center;">
-  Challenge #6. TDD approach
+  Challenge #5. Integration testing
 </h1>
 
-In this 6th challenge we are going to try the TDD (Test-driven development) approach.
+In this 5th challenge we are going add integration testing for our cases
 
 ## Instructions
-
-* Add a new HTTP endpoint to delete a 'Ad' from database
-* Write first the integration/unit tests and afterwards add the code to make them pass
-* Write all test scenarios first
+* For all scenarios until now add integration tests
 
 ## Resources
-
-1. Introduction to Test Driven Development (TDD) http://agiledata.org/essays/tdd.html
+1. IT example: https://www.simplilearn.com/what-is-integration-testing-examples-challenges-approaches-article
+2. IT example: https://www.lambdatest.com/learning-hub/integration-testing
