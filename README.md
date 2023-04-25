@@ -30,18 +30,28 @@ moment the available challenges are:
 
 ### Challenge #1. Visibility in Go, structs and data structures
 
-In this challenge we are going to work on how Go handles visibility by creating our first module and packages. 
+We are going to work on how Go handles visibility by creating our first module and packages. 
 Furthermore, we will define our first structs and data structures (arrays, maps and slices).
 
 ### Challenge #2. Error handling and testing
 
-In this second challenge we are going to practice error handling and adding the first test suites to test 
+Let's practice with error handling. Then we are going to add first test suites to validate 
 the pieces of code which we have been working on until now.
 
 ### Challenge #3. Building an HTTP API
 
 In this third challenge we are going to create our first HTTP API with Gin and to validate it with some fresh new 
 contract tests.
+
+### Challenge #4. Dockerizing our app and using a real database
+
+Let's dockerize our app and to write a new implementation of the repository, but this time we are going to use a real 
+database (PostgreSQL).
+
+### Challenge #5. Introducing Apache Kafka: consumers & producers
+
+In this fifth challenge we are going to deal with Kafka's consumers and producers using the third party library 
+`shopify/sarama`
 
 ## How to start
 
