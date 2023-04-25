@@ -3,15 +3,17 @@
 </p>
 
 <h1 align="center" style="text-align: center;">
-  Challenge #7. Clean code
+  Challenge #6. TDD approach
 </h1>
 
-In this 7th challenge we are going to take a look back on what we did until now and try to improve it using clean code principles.
+In this 6th challenge we are going to try the TDD (Test-driven development) approach.
 
 ## Instructions
 
-WIP
+* Add a new HTTP endpoint to delete a 'Ad' from database
+* Write first the integration/unit tests and afterwards add the code to make them pass
+* Write all test scenarios first
 
 ## Resources
 
-1. Summary of clean code principles: https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29
+1. Introduction to Test Driven Development (TDD) http://agiledata.org/essays/tdd.html
