@@ -1,17 +1,17 @@
-package ad
+package inmemory
 
-import . "github.mpi-internal.com/sergio.rodriguezp/learning-go/challenges/challenge_3/internal/ad/domain"
+import "github.mpi-internal.com/sergio.rodriguezp/learning-go/challenges/challenge_4/internal/ad/domain"
 
-type InMemoryRepository struct {
-	data []Ad
+type Repository struct {
+	data []domain.Ad
 }
 
-func (r *InMemoryRepository) Save(ad Ad) (bool, error) {
+func (r *Repository) Save(ad domain.Ad) (bool, error) {
 	r.data = append(r.data, ad)
 	return true, nil
 }
 
-func (r *InMemoryRepository) FindBy(id Id) (*Ad, error) {
+func (r *Repository) FindBy(id domain.Id) (*domain.Ad, error) {
 	for i := 0; i < len(r.data); i++ {
 		if r.data[i].Id() == id {
 			return &r.data[i], nil
@@ -20,7 +20,7 @@ func (r *InMemoryRepository) FindBy(id Id) (*Ad, error) {
 	return nil, nil
 }
 
-func (r *InMemoryRepository) FindSetOf(number int) ([]Ad, error) {
+func (r *Repository) FindSetOf(number int) ([]domain.Ad, error) {
 	const min = 1
 	const max = 5
 

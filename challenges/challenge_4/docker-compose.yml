@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    environment:
+      DBHOST: database
+      DBPORT: 5432
+      DBUSER: postgres
+      DBPASSWORD: 123123
+      DBNAME: test
+    ports:
+      - 8080:8080
+
+  database:
+    image: postgres:14.5
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123123
+      POSTGRES_DB: test

@@ -1,0 +1,32 @@
+### post an ad
+PUT http://localhost:8080/ads/ddbef8db-feda-46fa-85cf-5fbf07b94602
+Content-Type: application/json
+
+{
+  "title": "A title",
+  "description": "A description",
+  "price": 9.99
+}
+
+### get an ad by id
+GET http://localhost:8080/ads/7c5ee65d-2563-4f48-8fa7-1410379e10ab
+Accept: application/json
+
+### post a random ad
+PUT http://localhost:8080/ads/{{$random.uuid}}
+Content-Type: application/json
+
+{
+  "title": "A title",
+  "description": "A description",
+  "price": 9.99
+}
+
+### get a list of ads
+GET http://localhost:8080/ads
+Accept: application/json
+
+
+### get a list of ads with limit
+GET http://localhost:8080/ads?limit=5
+Accept: application/json
